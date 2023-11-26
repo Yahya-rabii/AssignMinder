@@ -1,0 +1,52 @@
+<div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+               
+              
+<!-- use card mat to display the assignment -->
+
+<mat-card *ngIf="assignmentTransmis">
+
+    <mat-card-content>
+    
+    <mat-card-title>
+    
+    <h2>{{assignmentTransmis.Nom}}</h2>
+    
+    </mat-card-title>
+    <mat-card-subtitle>
+        <p>la date de rendu est : {{assignmentTransmis.DateDeRendu | date}}</p>
+        <p *ngIf="assignmentTransmis.Rendu ; else nonsoumis" >
+            le devoir {{assignmentTransmis.Nom}} est rendu le {{assignmentTransmis.DateDeRendu}}
+            </p> 
+            <ng-template  #nonsoumis>
+                <p>
+                    le devoir {{assignmentTransmis.Nom}} n'est pas rendu 
+                </p>
+             
+            </ng-template>
+    </mat-card-subtitle>
+    
+    <!--use checkbox mat to set rendu to true or false -->
+    <mat-checkbox  *ngIf="!assignmentTransmis.Rendu   && !isAdmin" (change)="onRenduChange($event)">Rendu</mat-checkbox>
+    
+    </mat-card-content>
+    
+
+    <!-- use tailwind button to delete the assignment -->
+    
+    <mat-card-actions *ngIf="isAdmin">
+        <button (click)="onDeleteAssignment()"  type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
+    
+    
+        <button (click)="onUpdateAssignment()" type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">Update</button>
+    
+    </mat-card-actions>
+    </mat-card>
+    
+
+
+            </div>
+        </div>
+    </div>
+    

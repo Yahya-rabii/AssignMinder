@@ -1,0 +1,70 @@
+
+.rendu{
+    color: green;
+    border: 1px solid green;   
+}
+.nonrendu:hover, .rendu:hover{
+    cursor: pointer;
+}
+
+.rendu:hover{
+    background-color: grey;
+}
+.nonrendu{
+    color: red;
+    border: 1px solid red;
+}
+
+.form{
+ 
+    border: 1px solid rgb(0, 138, 138);
+    border-radius: 5px;
+    padding: 20px;
+    flex-direction: column;
+    display: flex;
+    position: relative;
+}
+
+  .costum{
+    border: 1px solid rgb(0, 138, 138);
+    border-radius: 5px;
+    padding: 20px;
+    flex-direction: column;
+    display: flex;
+    margin-top: 20px;
+  }
+ 
+
+  .bord{
+    align-items: center;
+    display: inline-block;
+    justify-content: center;
+    width: 500px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 20px;
+
+  }
+
+
+  .fixed-container {
+    min-height: 300px;
+    min-width: 900px;
+    height: 50px; /* Adjust the height as needed */
+
+    border: 1px solid #ccc; /* Add a grey border */
+    width: 800px;
+  }
+  
+/* Your global styles or styles file */
+.lef {
+    order: 1; /* The order property determines the order of flex items */
+    margin-left: 2px;
+}
+  
+  .pag {
+    margin-left: auto; /* Pushes the element to the right */
+    order: 2; /* The order property determines the order of flex items */
+  }
+  

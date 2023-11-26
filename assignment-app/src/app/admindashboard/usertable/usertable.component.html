@@ -1,0 +1,133 @@
+<div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4">
+      
+    <!-- Social Traffic -->
+    <div class="relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-gray-50 dark:bg-gray-800 w-full shadow-lg rounded">
+      <div class="rounded-t mb-0 px-0 border-0">
+        <div class="flex flex-wrap items-center px-4 py-2">
+          <div class="relative w-full max-w-full flex-grow flex-1">
+            <h3 class="font-semibold text-base text-gray-900 dark:text-gray-50">Social Traffic</h3>
+          </div>
+          <div class="relative w-full max-w-full flex-grow flex-1 text-right">
+            <button class="bg-blue-500 dark:bg-gray-100 text-white active:bg-blue-600 dark:text-gray-800 dark:active:text-gray-700 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">See all</button>
+          </div>
+        </div>
+        <div class="block w-full overflow-x-auto">
+          <table class="items-center w-full bg-transparent border-collapse">
+            <thead>
+              <tr>
+                <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Nom</th>
+                <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Date De Rendu</th>
+                <th class="px-4 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-100 align-middle border border-solid border-gray-200 dark:border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px"> Rendu</th>
+              </tr>
+            </thead>
+            <tbody>
+            
+            
+         
+
+           
+
+
+         <tr *ngFor="let item of assignments | paginate: { itemsPerPage: itemsPerPage, currentPage: p }; let i = index">
+            <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+              {{ item.Nom }}
+            </th>
+            <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+              {{ item.DateDeRendu | date }}
+            </td>
+            <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+              <span *ngIf="item.Rendu; else nonsoumis" class="text-red-500">Rendu</span>
+              <ng-template #nonsoumis>
+                <span class="text-red-500">Non Rendu</span>
+              </ng-template>
+            </td>
+          </tr>
+        </table>
+        
+        <!-- Add pagination controls -->
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+    <!-- ./Social Traffic -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <!-- Recent Activities -->
+    <div class="relative flex flex-col min-w-0 break-words bg-gray-50 dark:bg-gray-800 w-full shadow-lg rounded">
+        <div class="rounded-t mb-0 px-0 border-0">
+
+            <div class="mt-4 mx-4">
+                <div class="w-full overflow-hidden rounded-lg shadow-xs">
+                  <div class="w-full overflow-x-auto">
+                    <table class="w-full">
+                      <thead>
+
+                          <!-- Loop through the array of users and display each one in a table row -->
+                      <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                          <th class="px-4 py-3" >Email</th>
+                          <th class="px-4 py-3">Status</th>
+                         
+                        </tr>
+                      </thead>
+                      <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                        <tr *ngFor="let user of users"  class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
+                          <td class="px-4 py-3">
+                            <div class="flex items-center text-sm">
+                              <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                                <img class="object-cover w-full h-full rounded-full" src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=200&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE3Nzg0fQ" alt="" loading="lazy" />
+                                <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                              </div>
+                              <div>
+                                <p class="font-semibold"> {{user.Email}} </p>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="px-4 py-3 text-xs" *ngIf="getUserRole(user)">
+
+                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"> Admin </span>
+                          </td>
+                          <td class="px-4 py-3 text-xs" *ngIf="!getUserRole(user)">
+
+                            <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100"> User </span>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                 
+                 
+                 
+                 
+          
+         
+            </div>
+          </div>
+
+
+
+        </div>
+    </div>
+    <!-- ./Recent Activities -->
+  </div>
