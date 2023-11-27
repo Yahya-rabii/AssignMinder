@@ -41,7 +41,7 @@ export class LoginComponent {
   async login( email: string, password: string){
 
     try {
-      const req = await fetch('http://127.0.0.1:3000/api/users/login', {
+      const req = await fetch('http://164.90.219.178:3000/api/users/login', {
         method: "POST",
 
         headers: {

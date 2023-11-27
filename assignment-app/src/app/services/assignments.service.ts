@@ -25,7 +25,7 @@ export class AssignmentsService {
     this.loginservice.log(this.assignments.map((assignment) => assignment.get_attributes()), 'get');
     
     const xmlhttp = new XMLHttpRequest();
-    const url = 'http://127.0.0.1:3000/api/assignments';
+    const url = 'http://164.90.219.178:3000/api/assignments';
     xmlhttp.open('GET', url, false);
     xmlhttp.send();
     const data = JSON.parse(xmlhttp.responseText);
@@ -45,7 +45,7 @@ export class AssignmentsService {
     this.loginservice.log(assignment.get_attributes(), 'delete');
 
     const xmlhttp = new XMLHttpRequest();
-    const url = 'http://127.0.0.1:3000/api/assignments/'+ assignment.ID;
+    const url = 'http://164.90.219.178:3000/api/assignments/'+ assignment.ID;
     xmlhttp.open('DELETE', url, false);
     xmlhttp.send();
     const data = JSON.parse(xmlhttp.responseText);
@@ -60,7 +60,7 @@ export class AssignmentsService {
     
     this.loginservice.log(assignment.get_attributes(), 'update');
     const xmlhttp = new XMLHttpRequest();
-    const url = 'http://127.0.0.1:3000/api/assignments/' + assignment.ID;
+    const url = 'http://164.90.219.178:3000/api/assignments/' + assignment.ID;
     xmlhttp.open('PATCH', url, false);
     xmlhttp.setRequestHeader('Content-Type', 'application/json');
     xmlhttp.send(JSON.stringify(assignment));
@@ -83,7 +83,7 @@ export class AssignmentsService {
       assignment.Rendu = false;
 
       // Make the API call to add the assignment
-      await fetch('http://127.0.0.1:3000/api/assignments', {
+      await fetch('http://164.90.219.178:3000/api/assignments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

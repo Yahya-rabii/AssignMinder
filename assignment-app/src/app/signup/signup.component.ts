@@ -54,7 +54,7 @@ export class SignupComponent {
 async createUser( email: string, password: string){
 
   try {
-    const req = await fetch('http://127.0.0.1:3000/api/users', {
+    const req = await fetch('http://164.90.219.178:3000/api/users', {
       method: "POST", 
       headers: {
         "Content-Type": "application/json",

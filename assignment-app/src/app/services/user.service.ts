@@ -17,7 +17,7 @@ export class UsersService {
     const token = localStorage.getItem('token');
     let response : boolean= false
     try {
-      const req = await fetch('http://127.0.0.1:3000/api/users/me', {
+      const req = await fetch('http://164.90.219.178:3000/api/users/me', {
         method: "GET", 
         headers: {
           "Content-Type": "application/json",
@@ -41,7 +41,7 @@ async getTheCurrentUser(): Promise<User | null> {
   const token = localStorage.getItem('token');
   let response: User | null = null; // Initialize to null
   try {
-    const req = await fetch('http://127.0.0.1:3000/api/users/me', {
+    const req = await fetch('http://164.90.219.178:3000/api/users/me', {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +71,7 @@ async getTheCurrentUser(): Promise<User | null> {
     this.loginservice.log(this.users.map((user) => user.get_attributes()), 'get');
    
     const xmlhttp = new XMLHttpRequest();
-    const url = 'http://127.0.0.1:3000/api/users';
+    const url = 'http://164.90.219.178:3000/api/users';
     xmlhttp.open('GET', url, false);
     xmlhttp.send();
     const data = JSON.parse(xmlhttp.responseText);
@@ -88,7 +88,7 @@ async getTheCurrentUser(): Promise<User | null> {
     this.loginservice.log(user.get_attributes(), 'delete');
 
     const xmlhttp = new XMLHttpRequest();
-    const url = 'http://127.0.0.1:3000/api/users/'+ user.ID;
+    const url = 'http://164.90.219.178:3000/api/users/'+ user.ID;
     xmlhttp.open('DELETE', url, false);
     xmlhttp.send();
     const data = JSON.parse(xmlhttp.responseText);
@@ -103,7 +103,7 @@ async getTheCurrentUser(): Promise<User | null> {
     
     this.loginservice.log(user.get_attributes(), 'update');
     const xmlhttp = new XMLHttpRequest();
-    const url = 'http://127.0.0.1:3000/api/users/' + user.ID;
+    const url = 'http://164.90.219.178:3000/api/users/' + user.ID;
     xmlhttp.open('PATCH', url, false);
     xmlhttp.setRequestHeader('Content-Type', 'application/json');
     xmlhttp.send(JSON.stringify(user));
@@ -123,7 +123,7 @@ async getTheCurrentUser(): Promise<User | null> {
     console.log(user.ID);
 
     try {
-      await fetch('http://127.0.0.1:3000/api/users', {
+      await fetch('http://164.90.219.178:3000/api/users/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
